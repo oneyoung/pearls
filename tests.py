@@ -38,7 +38,7 @@ class TestCol1(unittest.TestCase):
         output_file = '/tmp/nums_sort.txt'
         n = 1000000
         nums_gen(input_file, n)
-        from col1 import bitmap_sort
+        from col1 import bitmap_sort as bitmap_sort
         bitmap_sort(input_file, output_file, n)
         # vefiry result
         last = -1
