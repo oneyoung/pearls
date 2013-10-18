@@ -58,8 +58,15 @@ class TestCol2(unittest.TestCase):
         i = len(a1)
         desired_array = bytearray(a2 + a1)
 
+        def test1method(method):
+            array = bytearray(a1 + a2)
+            method(array, n, i)
+            self.assertSequenceEqual(array, desired_array)
+
         # test reverse method
         from col2 import rotate_reverse
-        array = bytearray(a1 + a2)
-        rotate_reverse(array, n, i)
-        self.assertSequenceEqual(array, desired_array)
+        test1method(rotate_reverse)
+
+        # test juggling method
+        from col2 import rotate_juggling
+        test1method(rotate_juggling)

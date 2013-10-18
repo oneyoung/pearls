@@ -29,3 +29,23 @@ def rotate_reverse(array, n, i):
     reverse(array, 0, i - 1)
     reverse(array, i, n - 1)
     reverse(array, 0, n - 1)
+
+
+def rotate_juggling(array, n, i):
+    # juggling rotate method.
+    # idea is instead do a shift operation by 1, we use a stragety to
+    # shift by i
+    # T(n) = O(n), but this is not a cache friendly algorithm.
+
+    for s in xrange(gcd(n, i)):
+        tmp = array[s]
+        j = s
+        while 1:
+            k = j + i
+            if k >= n:  # make sure in array size range
+                k -= n
+            if k == s:  # if we reach start point, stop
+                break
+            array[j], array[k] = array[k], array[j]  # swap
+            j = k
+        array[j] = tmp
