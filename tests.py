@@ -47,3 +47,19 @@ class TestCol1(unittest.TestCase):
             num = int(l)
             assert num > last, 'num not sort'
             last = num
+
+
+class TestCol2(unittest.TestCase):
+    def test_rotate_array(self):
+        # prepare tested data
+        a1 = 'abcedfgh'
+        a2 = 'ihjkilshil'
+        n = len(a1) + len(a2)
+        i = len(a1)
+        desired_array = bytearray(a2 + a1)
+
+        # test reverse method
+        from col2 import rotate_reverse
+        array = bytearray(a1 + a2)
+        rotate_reverse(array, n, i)
+        self.assertSequenceEqual(array, desired_array)
